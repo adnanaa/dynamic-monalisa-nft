@@ -7,33 +7,30 @@
 </head>
 <body>
     <h1>Dynamic Mona Lisa</h1>
-    <!-- L'immagine iniziale sarà quella del mattino (morning.png) -->
-    <img id="dynamicImage" src="morning.png" alt="Mona Lisa" style="width:100%;height:auto;">
+    <!-- Assicurati di usare il nome corretto con maiuscole/minuscole -->
+    <img id="dynamicImage" src="morning.PNG" alt="Mona Lisa" style="width:100%;height:auto;">
     
     <script>
-        // Definiamo un oggetto che contiene le immagini per ogni momento della giornata
         const images = {
-            morning: "morning.png",
-            midday: "midday.png",
-            evening: "evening.png",
-            night: "night.png"
+            morning: "morning.PNG",
+            midday: "midday.PNG",
+            evening: "evening.PNG",
+            night: "night.PNG"
         };
 
-        // Funzione per determinare l'ora corrente e restituire il momento della giornata
         function getCurrentTimePeriod() {
             const hour = new Date().getHours();
             if (hour >= 6 && hour < 12) {
-                return "morning";  // Dalle 6:00 alle 11:59 mostrerà l'immagine "morning.png"
+                return "morning";
             } else if (hour >= 12 && hour < 18) {
-                return "midday";  // Dalle 12:00 alle 17:59 mostrerà "midday.png"
+                return "midday";
             } else if (hour >= 18 && hour < 22) {
-                return "evening";  // Dalle 18:00 alle 21:59 mostrerà "evening.png"
+                return "evening";
             } else {
-                return "night";  // Dalle 22:00 alle 5:59 mostrerà "night.png"
+                return "night";
             }
         }
 
-        // Imposta l'immagine corretta in base al momento della giornata
         document.getElementById("dynamicImage").src = images[getCurrentTimePeriod()];
     </script>
 </body>
