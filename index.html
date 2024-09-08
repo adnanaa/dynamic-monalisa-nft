@@ -2,34 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Mona Lisa</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dynamic Mona Lisa</h1>
-    <!-- Assicurati di usare il nome corretto con maiuscole/minuscole -->
-    <img id="dynamicImage" src="morning.PNG" alt="Mona Lisa" style="width:100%;height:auto;">
-    
-    <script>
-        const images = {
-            morning: "morning.PNG",
-            midday: "midday.PNG",
-            evening: "evening.PNG",
-            night: "night.PNG"
-        };
+    <img id="monaLisa" src="morning.jpeg" alt="Mona Lisa">
 
-        function getCurrentTimePeriod() {
-            const hour = new Date().getHours();
-            if (hour >= 6 && hour < 12) {
-                return "morning";
-            } else if (hour >= 12 && hour < 18) {
-                return "midday";
-            } else if (hour >= 18 && hour < 22) {
-                return "evening";
-            } else {
-                return "night";
-            }
+    <script>
+        const images = [
+            'morning.jpeg',
+            'midday.jpeg',
+            'evening.jpeg',
+            'night.jpeg'
+        ];
+
+        let currentIndex = 0;
+
+        function changeImage() {
+            const imgElement = document.getElementById('monaLisa');
+            currentIndex = (currentIndex + 1) % images.length;
+            imgElement.src = images[currentIndex];
         }
+
+        setInterval(changeImage, 5 * 60 * 1000); // Cambia ogni 5 minuti
+    </script>
+</body>
+</html>
+
 
         document.getElementById("dynamicImage").src = images[getCurrentTimePeriod()];
     </script>
